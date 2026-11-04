@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T19:54:20Z",
+  "title": "Design System: Hitoiki",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Warm Ground",
+        "tonalRamp": [
+          "oklch(15% 0.00621 75.41)",
+          "oklch(25% 0.00621 75.41)",
+          "oklch(35% 0.00621 75.41)",
+          "oklch(45% 0.00621 75.41)",
+          "oklch(55% 0.00621 75.41)",
+          "oklch(65% 0.00621 75.41)",
+          "oklch(80% 0.00621 75.41)",
+          "oklch(95% 0.00621 75.41)"
+        ]
+      },
+      "ground-deep": {
+        "role": "neutral",
+        "displayName": "Warm Inset",
+        "tonalRamp": [
+          "oklch(15% 0.01274 86.83)",
+          "oklch(25% 0.01274 86.83)",
+          "oklch(35% 0.01274 86.83)",
+          "oklch(45% 0.01274 86.83)",
+          "oklch(55% 0.01274 86.83)",
+          "oklch(65% 0.01274 86.83)",
+          "oklch(80% 0.01274 86.83)",
+          "oklch(95% 0.01274 86.83)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Green Ink",
+        "tonalRamp": [
+          "oklch(15% 0.02089 139.43)",
+          "oklch(25% 0.02089 139.43)",
+          "oklch(35% 0.02089 139.43)",
+          "oklch(45% 0.02089 139.43)",
+          "oklch(55% 0.02089 139.43)",
+          "oklch(65% 0.02089 139.43)",
+          "oklch(80% 0.02089 139.43)",
+          "oklch(95% 0.02089 139.43)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "tonalRamp": [
+          "oklch(15% 0.02285 133.29)",
+          "oklch(25% 0.02285 133.29)",
+          "oklch(35% 0.02285 133.29)",
+          "oklch(45% 0.02285 133.29)",
+          "oklch(55% 0.02285 133.29)",
+          "oklch(65% 0.02285 133.29)",
+          "oklch(80% 0.02285 133.29)",
+          "oklch(95% 0.02285 133.29)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Sage",
+        "tonalRamp": [
+          "oklch(15% 0.06109 138.45)",
+          "oklch(25% 0.06109 138.45)",
+          "oklch(35% 0.06109 138.45)",
+          "oklch(45% 0.06109 138.45)",
+          "oklch(55% 0.06109 138.45)",
+          "oklch(65% 0.06109 138.45)",
+          "oklch(80% 0.06109 138.45)",
+          "oklch(95% 0.06109 138.45)"
+        ]
+      },
+      "accent-deep": {
+        "role": "primary",
+        "displayName": "Deep Sage",
+        "tonalRamp": [
+          "oklch(15% 0.05260 139.05)",
+          "oklch(25% 0.05260 139.05)",
+          "oklch(35% 0.05260 139.05)",
+          "oklch(45% 0.05260 139.05)",
+          "oklch(55% 0.05260 139.05)",
+          "oklch(65% 0.05260 139.05)",
+          "oklch(80% 0.05260 139.05)",
+          "oklch(95% 0.05260 139.05)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Warm Rule",
+        "tonalRamp": [
+          "oklch(15% 0.01506 98.31)",
+          "oklch(25% 0.01506 98.31)",
+          "oklch(35% 0.01506 98.31)",
+          "oklch(45% 0.01506 98.31)",
+          "oklch(55% 0.01506 98.31)",
+          "oklch(65% 0.01506 98.31)",
+          "oklch(80% 0.01506 98.31)",
+          "oklch(95% 0.01506 98.31)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel Ground",
+        "tonalRamp": [
+          "oklch(15% 0.00570 84.57)",
+          "oklch(25% 0.00570 84.57)",
+          "oklch(35% 0.00570 84.57)",
+          "oklch(45% 0.00570 84.57)",
+          "oklch(55% 0.00570 84.57)",
+          "oklch(65% 0.00570 84.57)",
+          "oklch(80% 0.00570 84.57)",
+          "oklch(95% 0.00570 84.57)"
+        ]
+      },
+      "selection": {
+        "role": "primary",
+        "displayName": "Text Selection",
+        "tonalRamp": [
+          "oklch(15% 0.02236 132.55)",
+          "oklch(25% 0.02236 132.55)",
+          "oklch(35% 0.02236 132.55)",
+          "oklch(45% 0.02236 132.55)",
+          "oklch(55% 0.02236 132.55)",
+          "oklch(65% 0.02236 132.55)",
+          "oklch(80% 0.02236 132.55)",
+          "oklch(95% 0.02236 132.55)"
+        ]
+      },
+      "example-selected": {
+        "role": "primary",
+        "displayName": "Selected Example Ground",
+        "tonalRamp": [
+          "oklch(15% 0.01399 124.56)",
+          "oklch(25% 0.01399 124.56)",
+          "oklch(35% 0.01399 124.56)",
+          "oklch(45% 0.01399 124.56)",
+          "oklch(55% 0.01399 124.56)",
+          "oklch(65% 0.01399 124.56)",
+          "oklch(80% 0.01399 124.56)",
+          "oklch(95% 0.01399 124.56)"
+        ]
+      },
+      "example-selected-ink": {
+        "role": "primary",
+        "displayName": "Selected Example Ink",
+        "tonalRamp": [
+          "oklch(15% 0.05296 138.08)",
+          "oklch(25% 0.05296 138.08)",
+          "oklch(35% 0.05296 138.08)",
+          "oklch(45% 0.05296 138.08)",
+          "oklch(55% 0.05296 138.08)",
+          "oklch(65% 0.05296 138.08)",
+          "oklch(80% 0.05296 138.08)",
+          "oklch(95% 0.05296 138.08)"
+        ]
+      },
+      "command-entry": {
+        "role": "neutral",
+        "displayName": "Command Entry Ground",
+        "tonalRamp": [
+          "oklch(15% 0.00663 106.52)",
+          "oklch(25% 0.00663 106.52)",
+          "oklch(35% 0.00663 106.52)",
+          "oklch(45% 0.00663 106.52)",
+          "oklch(55% 0.00663 106.52)",
+          "oklch(65% 0.00663 106.52)",
+          "oklch(80% 0.00663 106.52)",
+          "oklch(95% 0.00663 106.52)"
+        ]
+      },
+      "control-border": {
+        "role": "neutral",
+        "displayName": "Control Border",
+        "tonalRamp": [
+          "oklch(15% 0.02119 131.49)",
+          "oklch(25% 0.02119 131.49)",
+          "oklch(35% 0.02119 131.49)",
+          "oklch(45% 0.02119 131.49)",
+          "oklch(55% 0.02119 131.49)",
+          "oklch(65% 0.02119 131.49)",
+          "oklch(80% 0.02119 131.49)",
+          "oklch(95% 0.02119 131.49)"
+        ]
+      },
+      "control-hover": {
+        "role": "primary",
+        "displayName": "Control Hover Ground",
+        "tonalRamp": [
+          "oklch(15% 0.01525 123.05)",
+          "oklch(25% 0.01525 123.05)",
+          "oklch(35% 0.01525 123.05)",
+          "oklch(45% 0.01525 123.05)",
+          "oklch(55% 0.01525 123.05)",
+          "oklch(65% 0.01525 123.05)",
+          "oklch(80% 0.01525 123.05)",
+          "oklch(95% 0.01525 123.05)"
+        ]
+      },
+      "panel-rule": {
+        "role": "neutral",
+        "displayName": "Panel Rule",
+        "tonalRamp": [
+          "oklch(15% 0.01337 106.66)",
+          "oklch(25% 0.01337 106.66)",
+          "oklch(35% 0.01337 106.66)",
+          "oklch(45% 0.01337 106.66)",
+          "oklch(55% 0.01337 106.66)",
+          "oklch(65% 0.01337 106.66)",
+          "oklch(80% 0.01337 106.66)",
+          "oklch(95% 0.01337 106.66)"
+        ]
+      },
+      "icon-ground": {
+        "role": "neutral",
+        "displayName": "Icon Ground",
+        "tonalRamp": [
+          "oklch(15% 0.03045 85.57)",
+          "oklch(25% 0.03045 85.57)",
+          "oklch(35% 0.03045 85.57)",
+          "oklch(45% 0.03045 85.57)",
+          "oklch(55% 0.03045 85.57)",
+          "oklch(65% 0.03045 85.57)",
+          "oklch(80% 0.03045 85.57)",
+          "oklch(95% 0.03045 85.57)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Main page heading; responsive clamp changes in the stacked layout."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Technical-note headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text, normally bounded to 62ch."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Larger introductory paragraph."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Compact navigation links."
+      },
+      "action": {
+        "displayName": "Action",
+        "purpose": "Primary link styled as a button."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Run and copy controls and preview metadata."
+      },
+      "command": {
+        "displayName": "Command",
+        "purpose": "Command-entry text."
+      },
+      "transcript": {
+        "displayName": "Transcript",
+        "purpose": "Preformatted output with tabular numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "command-panel",
+        "value": "0 12px 32px -12px #28302638",
+        "purpose": "The single raised surface: the illustrative command panel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "interaction-color",
+        "value": "color 120ms ease, background-color 120ms ease",
+        "purpose": "Link and button feedback; disabled by prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-wide-min",
+        "value": "900px"
+      },
+      {
+        "name": "compact-wide-max",
+        "value": "1080px"
+      },
+      {
+        "name": "stacked-max",
+        "value": "899px"
+      },
+      {
+        "name": "narrow-max",
+        "value": "540px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Compact filled link for the main page action.",
+      "html": "<a class=\"ds-primary\" href=\"#release\">Release status</a>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;padding:.65rem 1.05rem;border-radius:3px;background:var(--accent,#4f6947);color:var(--ground,#faf7f3);text-decoration:none;font-size:.9rem;font-weight:500;line-height:1.65;font-family:var(--sans,-apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif);transition:color 120ms ease,background-color 120ms ease;}.ds-primary:hover{background:#3f5539;color:var(--ground,#faf7f3);}.ds-primary:focus-visible{outline:2px solid var(--accent,#4f6947);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-picker button,.ds-run,.ds-text,.ds-nav a,.ds-disclosure summary{transition:none;}}"
+    },
+    {
+      "name": "Example selectors",
+      "kind": "chip",
+      "refersTo": "example-selector",
+      "description": "Plain compact buttons whose selected state marks the sample being shown.",
+      "html": "<div class=\"ds-picker\" role=\"group\" aria-label=\"Choose an example\"><button type=\"button\" aria-pressed=\"false\">Local</button><button type=\"button\" aria-pressed=\"true\">SSH</button><button type=\"button\" aria-pressed=\"false\">Remote sudo</button></div>",
+      "css": ".ds-picker{display:flex;gap:.3rem;align-items:center;}.ds-picker button{border:0;border-radius:3px;padding:.45rem .8rem;background:transparent;color:var(--muted,#555d50);font-size:.82rem;line-height:1.65;cursor:pointer;font-family:var(--sans,-apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif);transition:color 120ms ease,background-color 120ms ease;}.ds-picker button:hover{background:var(--ground-deep,#f0ece3);color:var(--ink,#283026);}.ds-picker button[aria-pressed=\"true\"]{background:#e5e9df;color:#354a2e;font-weight:500;}.ds-picker button:focus-visible{outline:2px solid var(--accent,#4f6947);outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-picker button,.ds-run,.ds-text,.ds-nav a,.ds-disclosure summary{transition:none;}}"
+    },
+    {
+      "name": "Run control",
+      "kind": "button",
+      "refersTo": "button-run",
+      "description": "Small bordered control for playing the browser-local example.",
+      "html": "<button class=\"ds-run\" type=\"button\">Run example</button>",
+      "css": ".ds-run{padding:.35rem .65rem;border:1px solid #bdc5b7;border-radius:4px;background:var(--panel,#fdfbf7);color:var(--ink,#283026);font-size:.75rem;line-height:1.65;cursor:pointer;font-family:var(--sans,-apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif);transition:color 120ms ease,background-color 120ms ease;}.ds-run:hover{background:#e6eadf;}.ds-run:focus-visible{outline:2px solid var(--accent,#4f6947);outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-picker button,.ds-run,.ds-text,.ds-nav a,.ds-disclosure summary{transition:none;}}"
+    },
+    {
+      "name": "Text control",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Unfilled secondary control used for copying output.",
+      "html": "<button class=\"ds-text\" type=\"button\">Copy output</button>",
+      "css": ".ds-text{padding:.15rem .2rem;border:0;background:transparent;color:var(--muted,#555d50);font-size:.75rem;line-height:1.65;cursor:pointer;font-family:var(--sans,-apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif);transition:color 120ms ease,background-color 120ms ease;}.ds-text:hover{color:var(--ink,#283026);}.ds-text:focus-visible{outline:2px solid var(--accent,#4f6947);outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-picker button,.ds-run,.ds-text,.ds-nav a,.ds-disclosure summary{transition:none;}}"
+    },
+    {
+      "name": "Main navigation",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Small native text links without a navigation container surface.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#ssh\">SSH</a><a href=\"#agents\">With an agent</a><a href=\"#release\">Release status</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:1.7rem;font-family:var(--sans,-apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif);}.ds-nav a{padding:.4rem 0;color:var(--muted,#555d50);font-size:.85rem;line-height:1.65;text-decoration:none;transition:color 120ms ease,background-color 120ms ease;}.ds-nav a:last-child{color:var(--accent,#4f6947);}.ds-nav a:hover{color:var(--ink,#283026);}.ds-nav a:last-child:hover{color:var(--accent,#4f6947);}.ds-nav a:focus-visible{outline:2px solid var(--accent,#4f6947);outline-offset:5px;}@media(max-width:540px){.ds-nav{width:100%;gap:1.5rem;flex-wrap:wrap;}.ds-nav a{font-size:.8rem;}}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-picker button,.ds-run,.ds-text,.ds-nav a,.ds-disclosure summary{transition:none;}}"
+    },
+    {
+      "name": "Command panel",
+      "kind": "custom",
+      "refersTo": "command-panel",
+      "description": "Light sample command and output with the system’s only raised surface.",
+      "html": "<div class=\"ds-panel\"><div class=\"ds-entry\"><span class=\"ds-prompt\" aria-hidden=\"true\">&gt;</span><code>ssh server 'uptime'</code><button class=\"ds-panel-run\" type=\"button\">Run example</button></div><div class=\"ds-transcript\"><pre tabindex=\"0\" aria-label=\"Sample command output\"> 12:24:08 up 42 days, 3:17, 1 user,\n load average: 0.08, 0.12, 0.09</pre></div><div class=\"ds-panel-footer\"><span role=\"status\">Exited 0</span><button class=\"ds-panel-copy\" type=\"button\">Copy output</button></div></div>",
+      "css": ".ds-panel{max-width:620px;overflow:hidden;border-radius:11px;background:var(--panel,#fdfbf7);color:var(--ink,#283026);box-shadow:0 12px 32px -12px #28302638;font-family:var(--sans,-apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif);}.ds-entry{display:flex;align-items:center;gap:.75rem;min-height:68px;padding:1rem;background:#f1f1ec;}.ds-prompt{color:var(--accent,#4f6947);font-size:1.1rem;font-family:var(--mono,ui-monospace,\"SF Mono\",SFMono-Regular,Menlo,Consolas,monospace);}.ds-entry code{flex:1;min-width:0;font-size:.86rem;line-height:1.5;overflow-wrap:anywhere;font-family:var(--mono,ui-monospace,\"SF Mono\",SFMono-Regular,Menlo,Consolas,monospace);}.ds-transcript{min-height:144px;padding:1.2rem 1.1rem;}.ds-transcript pre{margin:0;min-height:90px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.8rem;line-height:1.7;font-variant-numeric:tabular-nums;tab-size:4;font-family:var(--mono,ui-monospace,\"SF Mono\",SFMono-Regular,Menlo,Consolas,monospace);}.ds-transcript pre:focus-visible{outline:2px solid var(--accent,#4f6947);outline-offset:5px;}.ds-panel-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:39px;padding:.45rem 1rem;border-top:1px solid #e5e5db;color:var(--accent,#4f6947);font-size:.75rem;line-height:1.65;}.ds-panel-run{flex:none;padding:.35rem .65rem;border:1px solid #bdc5b7;border-radius:4px;color:var(--ink,#283026);background:var(--panel,#fdfbf7);font:inherit;font-size:.75rem;cursor:pointer;transition:color 120ms ease,background-color 120ms ease;}.ds-panel-run:hover{background:#e6eadf;}.ds-panel-copy{border:0;background:transparent;color:var(--muted,#555d50);padding:.15rem .2rem;font:inherit;font-size:.75rem;cursor:pointer;transition:color 120ms ease,background-color 120ms ease;}.ds-panel-copy:hover{color:var(--ink,#283026);}.ds-panel-run:focus-visible,.ds-panel-copy:focus-visible{outline:2px solid var(--accent,#4f6947);outline-offset:3px;}@media(max-width:540px){.ds-entry{gap:.6rem;padding:.85rem;flex-wrap:wrap;}.ds-entry code{font-size:.78rem;}}@media(prefers-reduced-motion:reduce){.ds-panel-run,.ds-panel-copy{transition:none;}}"
+    },
+    {
+      "name": "Command examples",
+      "kind": "custom",
+      "refersTo": "command-examples",
+      "description": "Flat tonal grouping for literal shell command examples.",
+      "html": "<div class=\"ds-examples\" aria-label=\"SSH command examples\"><code>ssh server 'df -h'</code><code>ssh -tt server 'sudo systemctl status nginx --no-pager'</code></div>",
+      "css": ".ds-examples{display:grid;gap:.6rem;padding:1rem 1.1rem;background:var(--ground-deep,#f0ece3);border-radius:3px;}.ds-examples code{font-size:.76rem;line-height:1.65;color:var(--ink,#283026);overflow-wrap:anywhere;font-family:var(--mono,ui-monospace,\"SF Mono\",SFMono-Regular,Menlo,Consolas,monospace);}"
+    },
+    {
+      "name": "Release container",
+      "kind": "card",
+      "refersTo": "release-container",
+      "description": "Flat warm inset for release information, without a card shadow.",
+      "html": "<section class=\"ds-release\"><h2>First release in progress.</h2><p>The download and purchase links will appear here when the release is ready.</p></section>",
+      "css": ".ds-release{padding:2.5rem;border-radius:3px;background:var(--ground-deep,#f0ece3);color:var(--ink,#283026);font-family:var(--sans,-apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif);}.ds-release h2{margin:.1rem 0 .85rem;font-size:1.4rem;font-weight:600;line-height:1.25;letter-spacing:-.025em;}.ds-release p{max-width:62ch;margin:0;color:var(--muted,#555d50);font-size:.8rem;line-height:1.65;}@media(max-width:540px){.ds-release{padding:1.5rem;}.ds-release h2{font-size:1.3rem;}}"
+    },
+    {
+      "name": "Technical disclosure",
+      "kind": "custom",
+      "description": "Native disclosure marker and an accent summary for additional technical detail.",
+      "html": "<details class=\"ds-disclosure\"><summary>Shell behavior and limits</summary><div class=\"ds-detail\"><p>Commands use the environment captured from your login shell. Interactive shell aliases and functions are not available.</p></div></details>",
+      "css": ".ds-disclosure{margin-top:1.75rem;padding-top:1rem;border-top:1px solid var(--rule,#d7d5ca);font-family:var(--sans,-apple-system,BlinkMacSystemFont,\"Segoe UI\",system-ui,sans-serif);}.ds-disclosure summary{width:fit-content;color:var(--accent,#4f6947);font-size:.87rem;line-height:1.65;cursor:pointer;}.ds-disclosure summary::marker{font-size:.7rem;}.ds-disclosure summary:focus-visible{outline:2px solid var(--accent,#4f6947);outline-offset:5px;}.ds-detail{max-width:70ch;padding:1rem 0 0 1rem;color:var(--muted,#555d50);font-size:.87rem;line-height:1.65;}.ds-detail p{margin:0;}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-picker button,.ds-run,.ds-text,.ds-nav a,.ds-disclosure summary{transition:none;}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A small native command panel",
+    "overview": "Hitoiki belongs to the warm, simple Palana visual family. Native system typography, green ink, warm grounds, and the supplied Hitoiki mark make the website feel related to the Mac utility. QuickCMD informs the compactness and direct presentation; the page uses its own code and approved asset.\n\nThe system is flat, quiet, and precise. Fine rules separate information, small controls keep the interaction compact, and one softly raised command panel represents the application. Plain technical copy and literal command text carry the explanation without decorative illustration.",
+    "keyCharacteristics": [
+      "Warm light surfaces with one sage interaction accent.",
+      "Native system sans for prose and headings; system monospace for commands and output.",
+      "Compact controls, fine rules, and restrained corner radii.",
+      "The supplied icon remains the identity asset."
+    ],
+    "rules": [
+      {
+        "name": "The Sage Interaction Rule",
+        "body": "Use sage for links, actions, selected examples, and command status; keep prose in ink or muted ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Native Type Rule",
+        "body": "Preserve the pinned system font stacks; do not substitute a display face or load a web font.",
+        "section": "typography"
+      },
+      {
+        "name": "The Single Raised Panel Rule",
+        "body": "Reserve the downward shadow for the command preview; ordinary sections and tonal containers remain flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use the supplied Hitoiki SVG, preserving its ink, warm ground, and squircle geometry.",
+      "Do use the native system sans and monospace stacks already implemented.",
+      "Do distinguish commands and output with monospace text, wrap long command text, and retain readable output.",
+      "Do retain visible keyboard focus and disable transitions when reduced motion is requested.",
+      "Do keep component states and responsive changes consistent with the existing compact controls."
+    ],
+    "donts": [
+      "Don't add a dark terminal theme from the provisional seed; the implemented preview is light.",
+      "Don't repeat the preview's shadow or rounded panel silhouette across ordinary content sections.",
+      "Don't add generated illustration, decorative statistics, testimonials, slogans, or chat-style presentation.",
+      "Don't replace the pinned native type or Palana family palette with the general personal-brand font and accent defaults.",
+      "Don't make the illustrative preview look like an editable terminal or password field."
+    ]
+  }
+}

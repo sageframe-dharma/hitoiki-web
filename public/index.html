@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hitoiki — a small command panel for Mac</title>
+  <meta name="description" content="Run a shell command from a small Mac panel. Local commands, SSH, and remote sudo using your existing configuration. Free GitHub release in preparation.">
+  <meta name="theme-color" content="#faf7f3">
+  <meta property="og:title" content="Hitoiki — a small command panel for Mac">
+  <meta property="og:description" content="Run a command. Local or over SSH. A native Mac utility using your existing shell, SSH configuration, and keys.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hitoiki.sageframe.net/">
+  <link rel="canonical" href="https://hitoiki.sageframe.net/">
+  <link rel="icon" href="/assets/hitoiki-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/site.css">
+  <script src="/preview.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Hitoiki home">
+        <img src="/assets/hitoiki-icon.svg" width="36" height="36" alt="">
+        <span>hitoiki</span><span class="kanji" lang="ja">一息</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#ssh">SSH</a>
+        <a href="#agents">With an agent</a>
+        <a href="#release">Release status</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="intro" aria-labelledby="intro-heading">
+        <div class="intro-copy">
+          <h1 id="intro-heading">Run a command.<br>Local or over SSH.</h1>
+          <p class="lede">A small Mac panel for the command you need to run right now.</p>
+          <p>Press a shortcut, type or paste a command, and press Return.
+            Read the output, copy what you need, and dismiss the panel.</p>
+          <a class="button" href="#release">Release status</a>
+          <p class="availability">macOS 14+ · First release in progress</p>
+        </div>
+
+        <figure class="preview" id="preview" aria-labelledby="preview-caption">
+          <div class="example-picker" role="group" aria-label="Choose an example">
+            <button type="button" data-example="local" aria-pressed="false">Local</button>
+            <button type="button" data-example="ssh" aria-pressed="true">SSH</button>
+            <button type="button" data-example="sudo" aria-pressed="false">Remote sudo</button>
+          </div>
+          <div class="command-panel">
+            <div class="command-entry">
+              <span class="prompt" aria-hidden="true">&gt;</span>
+              <code id="example-command">ssh server 'uptime'</code>
+              <button class="run-button" id="run-example" type="button">Run example</button>
+            </div>
+            <div class="transcript">
+              <pre id="example-output" tabindex="0" aria-label="Sample command output"> 12:24:08 up 42 days, 3:17, 1 user,
+ load average: 0.08, 0.12, 0.09</pre>
+            </div>
+            <div class="panel-footer">
+              <span class="run-status" id="run-status" role="status">Exited 0</span>
+              <button class="text-button" id="copy-output" type="button">Copy output</button>
+            </div>
+          </div>
+          <figcaption id="preview-caption">Interactive preview with sample output. No commands run here.</figcaption>
+          <noscript><p class="no-script">Enable JavaScript to switch examples and play the preview.</p></noscript>
+        </figure>
+      </section>
+
+      <div class="facts" aria-label="Application details">
+        <span>Native Mac app</span>
+        <span>Written in Swift</span>
+        <span>One command at a time</span>
+      </div>
+
+      <section class="feature" id="ssh" aria-labelledby="ssh-heading">
+        <div class="section-title">
+          <h2 id="ssh-heading">Use the SSH setup<br>you already have.</h2>
+        </div>
+        <div class="section-body">
+          <p>Hitoiki runs <code>/usr/bin/ssh</code> with your existing
+            <code>~/.ssh/config</code>, host aliases, keys, and SSH agent.
+            Type the complete command, just as you would in a terminal.</p>
+          <div class="command-examples" aria-label="SSH command examples">
+            <code>ssh server 'df -h'</code>
+            <code>ssh -tt server 'sudo systemctl status nginx --no-pager'</code>
+          </div>
+          <p>Password prompts work in the panel. Input is forwarded to the running
+            command, and password entry respects terminal echo settings.
+            If remote sudo needs a terminal, Hitoiki offers to retry with <code>-tt</code>.</p>
+        </div>
+      </section>
+
+      <section class="feature" id="agents" aria-labelledby="agents-heading">
+        <div class="section-title">
+          <h2 id="agents-heading">Your agent gives you<br>a command to run.</h2>
+        </div>
+        <div class="section-body">
+          <p>Keep your coding agent's permissions restricted. When a command needs
+            access to your Mac or a remote host, run it yourself in Hitoiki.</p>
+          <ol class="handoff">
+            <li>Copy the command from the conversation.</li>
+            <li>Paste it into Hitoiki, review it, and press Return.</li>
+            <li>Copy the result back to your agent.</li>
+          </ol>
+          <p>This works with any agent that gives you command text, including commands
+            using SSH or sudo. You choose what runs and enter any required password yourself.</p>
+        </div>
+      </section>
+
+      <section class="notes" aria-labelledby="notes-heading">
+        <h2 id="notes-heading">A few details.</h2>
+        <div class="notes-grid">
+          <div>
+            <h3>Output and input</h3>
+            <p>Output streams as the command runs, with color, text selection,
+              and copying. Keyboard input goes to the running command.
+              Stop interrupts it; a second Stop force-terminates the local process group.</p>
+          </div>
+          <div>
+            <h3>Local operation</h3>
+            <p>The app does not collect telemetry or require an account.
+              Transcripts stay in memory. Commands you run can make their own
+              network requests.</p>
+          </div>
+        </div>
+        <details>
+          <summary>Shell behavior and limits</summary>
+          <div class="detail-body">
+            <p>Commands use the environment captured from your login shell.
+              Interactive shell aliases and functions are not available.
+              Output retention is bounded.</p>
+            <p>Use a terminal for full-screen applications such as Vim, htop,
+              or tmux, and for persistent sessions. Interrupting SSH without an
+              allocated remote terminal can leave the remote command running.</p>
+            <p>Hitoiki runs commands with your account's permissions. It does
+              not inspect commands, enforce agent permissions, or sandbox execution.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="release" id="release" aria-labelledby="release-heading">
+        <img class="release-icon" src="/assets/hitoiki-icon.svg" width="88" height="88" alt="">
+        <div>
+          <h2 id="release-heading">First release in progress.</h2>
+          <p>Hitoiki is being prepared for release. The app and MIT-licensed source
+            will be available free on GitHub. An optional paid download will
+            support development.</p>
+          <p class="release-note">The download and purchase links will appear here when the release is ready.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made by <a href="https://atmarcus.net">Andrew Marcus</a> · <a href="https://sageframe.net">Sageframe</a></p>
+      <p><a href="https://github.com/sageframe-dharma/hitoiki-web">Website source</a><span lang="ja">一息</span> · one breath</p>
+    </footer>
+  </div>
+</body>
+</html>
