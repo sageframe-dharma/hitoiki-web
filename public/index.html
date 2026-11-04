@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hitoiki — a small command panel for Mac</title>
-  <meta name="description" content="Run a shell command from a small Mac panel. Local commands, SSH, and remote sudo using your existing configuration. Free GitHub release in preparation.">
+  <title>Hitoiki — a shell command runner for Mac</title>
+  <meta name="description" content="A floating shell command runner for Mac. Invoke it like Spotlight or Windows Run, run a local or SSH command, and read the output in the same panel.">
   <meta name="theme-color" content="#faf7f3">
-  <meta property="og:title" content="Hitoiki — a small command panel for Mac">
-  <meta property="og:description" content="Run a command. Local or over SSH. A native Mac utility using your existing shell, SSH configuration, and keys.">
+  <meta property="og:title" content="Hitoiki — a shell command runner for Mac">
+  <meta property="og:description" content="Invoke it like Spotlight or Windows Run. Enter a shell command and read its output in the same panel, locally or over SSH.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hitoiki.sageframe.net/">
   <link rel="canonical" href="https://hitoiki.sageframe.net/">
@@ -25,20 +25,26 @@
       </a>
       <nav aria-label="Main navigation">
         <a href="#ssh">SSH</a>
-        <a href="#agents">With an agent</a>
-        <a href="#release">Release status</a>
+        <a href="/docs/">Docs</a>
+        <a href="#faq">FAQ</a>
+        <a href="#get">Get Hitoiki</a>
       </nav>
     </header>
 
     <main id="main">
       <section class="intro" aria-labelledby="intro-heading">
         <div class="intro-copy">
-          <h1 id="intro-heading">Run a command.<br>Local or over SSH.</h1>
-          <p class="lede">A small Mac panel for the command you need to run right now.</p>
-          <p>Press a shortcut, type or paste a command, and press Return.
-            Read the output, copy what you need, and dismiss the panel.</p>
-          <a class="button" href="#release">Release status</a>
-          <p class="availability">macOS 14+ · First release in progress</p>
+          <h1 id="intro-heading">A command runner<br>for Mac.</h1>
+          <p class="lede">Open it with a keyboard shortcut, like Spotlight or
+            Windows Run (<kbd>Win+R</kbd>).</p>
+          <p>Type a shell command and read its output in the same panel.
+            Run it on your Mac or over SSH, including commands that ask for a
+            password. Copy the result and dismiss the panel.</p>
+          <div class="action-row">
+            <a class="button" href="#get">Get Hitoiki</a>
+            <a href="/docs/">Read the documentation</a>
+          </div>
+          <p class="availability">macOS 14+ · Native Swift app · MIT license</p>
         </div>
 
         <figure class="preview" id="preview" aria-labelledby="preview-caption">
@@ -67,18 +73,33 @@
         </figure>
       </section>
 
-      <div class="facts" aria-label="Application details">
-        <span>Native Mac app</span>
-        <span>Written in Swift</span>
-        <span>One command at a time</span>
-      </div>
+      <section class="comparison" aria-labelledby="comparison-heading">
+        <h2 id="comparison-heading">How it compares.</h2>
+        <table>
+          <thead><tr><th scope="col">Tool</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="https://learn.microsoft.com/en-us/windows/advanced-settings/modern-run">Windows Run</a> <span class="shortcut">Win+R</span></th>
+              <td>Launches a command or opens a local or network path from a small dialog.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://support.apple.com/guide/mac-help/mchlp1008/mac">Spotlight</a> <span class="shortcut">Command-Space</span></th>
+              <td>Finds apps and files, shows results, and runs supported actions.</td>
+            </tr>
+            <tr>
+              <th scope="row">Hitoiki</th>
+              <td>Runs a shell command locally or over SSH and keeps its output and password prompts in the panel.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
       <section class="feature" id="ssh" aria-labelledby="ssh-heading">
         <div class="section-title">
           <h2 id="ssh-heading">Use the SSH setup<br>you already have.</h2>
         </div>
         <div class="section-body">
-          <p>Hitoiki runs <code>/usr/bin/ssh</code> with your existing
+          <p>Hitoiki runs SSH commands through your shell, using your existing
             <code>~/.ssh/config</code>, host aliases, keys, and SSH agent.
             Type the complete command, just as you would in a terminal.</p>
           <div class="command-examples" aria-label="SSH command examples">
@@ -88,6 +109,7 @@
           <p>Password prompts work in the panel. Input is forwarded to the running
             command, and password entry respects terminal echo settings.
             If remote sudo needs a terminal, Hitoiki offers to retry with <code>-tt</code>.</p>
+          <p><a href="/docs/#ssh">SSH and sudo documentation</a></p>
         </div>
       </section>
 
@@ -108,45 +130,53 @@
         </div>
       </section>
 
-      <section class="notes" aria-labelledby="notes-heading">
-        <h2 id="notes-heading">A few details.</h2>
-        <div class="notes-grid">
-          <div>
-            <h3>Output and input</h3>
-            <p>Output streams as the command runs, with color, text selection,
-              and copying. Keyboard input goes to the running command.
-              Stop interrupts it; a second Stop force-terminates the local process group.</p>
-          </div>
-          <div>
-            <h3>Local operation</h3>
-            <p>The app does not collect telemetry or require an account.
-              Transcripts stay in memory. Commands you run can make their own
-              network requests.</p>
-          </div>
-        </div>
+      <section class="faq" id="faq" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">Frequently asked questions.</h2>
         <details>
-          <summary>Shell behavior and limits</summary>
-          <div class="detail-body">
-            <p>Commands use the environment captured from your login shell.
-              Interactive shell aliases and functions are not available.
-              Output retention is bounded.</p>
-            <p>Use a terminal for full-screen applications such as Vim, htop,
-              or tmux, and for persistent sessions. Interrupting SSH without an
-              allocated remote terminal can leave the remote command running.</p>
-            <p>Hitoiki runs commands with your account's permissions. It does
-              not inspect commands, enforce agent permissions, or sandbox execution.</p>
-          </div>
+          <summary>Is Hitoiki free?</summary>
+          <div class="detail-body"><p>Yes. The app and MIT-licensed source are free on GitHub.
+            The optional Payhip purchase supports development and provides the same app.</p></div>
+        </details>
+        <details>
+          <summary>Can it run SSH commands and sudo?</summary>
+          <div class="detail-body"><p>Yes. Hitoiki uses your installed SSH client, configuration,
+            keys, and agent. Password prompts work in the panel; remote sudo can request a
+            terminal with <code>ssh -tt</code>. <a href="/docs/#sudo">Read about password input.</a></p></div>
+        </details>
+        <details>
+          <summary>Does it include AI?</summary>
+          <div class="detail-body"><p>No. Hitoiki runs the command text you enter.
+            You can paste a command from any coding agent, run it yourself, and copy
+            the output back. No AI account or integration is required.</p></div>
+        </details>
+        <details>
+          <summary>Does it replace Terminal?</summary>
+          <div class="detail-body"><p>Use Hitoiki for short commands. Use a terminal for
+            persistent sessions, full-screen applications such as Vim or htop, and work
+            that needs a complete terminal emulator.</p></div>
+        </details>
+        <details>
+          <summary>Does Hitoiki save passwords or transcripts?</summary>
+          <div class="detail-body"><p>Interactive password input is forwarded to the running
+            program and is not saved by Hitoiki. Transcripts stay in memory.
+            Normal SSH and sudo password prompts disable echo, so the password does
+            not appear in the output. <a href="/docs/#privacy">Privacy details.</a></p></div>
+        </details>
+        <details>
+          <summary>Which Macs does it run on?</summary>
+          <div class="detail-body"><p>Hitoiki requires macOS 14 or later.
+            It uses the shell and OpenSSH client already installed on your Mac.</p></div>
         </details>
       </section>
 
-      <section class="release" id="release" aria-labelledby="release-heading">
+      <section class="release" id="get" aria-labelledby="release-heading">
         <img class="release-icon" src="/assets/hitoiki-icon.svg" width="88" height="88" alt="">
         <div>
-          <h2 id="release-heading">First release in progress.</h2>
-          <p>Hitoiki is being prepared for release. The app and MIT-licensed source
-            will be available free on GitHub. An optional paid download will
-            support development.</p>
-          <p class="release-note">The download and purchase links will appear here when the release is ready.</p>
+          <h2 id="release-heading">Get Hitoiki.</h2>
+          <p>Download the app free from GitHub or buy it on Payhip to support
+            development. Both downloads contain the same app.</p>
+          <!-- Insert the verified Hitoiki download and Payhip product links here. -->
+          <p class="release-note">macOS 14+ · MIT-licensed source · No account or activation</p>
         </div>
       </section>
     </main>

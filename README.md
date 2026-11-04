@@ -1,7 +1,8 @@
 # Hitoiki website
 
-Source for <https://hitoiki.sageframe.net>. A static HTML page, CSS, and a small
-browser-only command preview. No framework, build step, or runtime dependencies.
+Source for <https://hitoiki.sageframe.net>. A static home page, full documentation
+at `/docs/`, CSS, and a small browser-only command preview. No framework,
+build step, or runtime dependencies.
 
 ## Preview and checks
 
@@ -23,8 +24,11 @@ accepted visual direction. The original icon is in `design/hitoiki-icon.svg`;
 the website derivative in `public/assets/` adds a squircle clip. No application
 code, repository names, or release state are changed by this site.
 
-The app is not released yet. Replace the release-status copy with verified
-GitHub and purchase links when those destinations exist.
+The practitioner requested release-oriented copy. The site describes the
+application in the present tense and includes a Run/Spotlight comparison and
+FAQ. The Hitoiki GitHub release and Payhip product destinations still need to be
+provided before the download and purchase actions can be wired. Never reuse
+m4Bookmaker's product URL for Hitoiki.
 
 ## Publication
 

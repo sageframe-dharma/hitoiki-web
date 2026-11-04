@@ -224,6 +224,15 @@ Navigation is a simple horizontal row of small system text with no containing su
 
 Command examples and release information sit on the warm inset ground with the compact radius. The release container is flat, with a larger internal inset that reduces on narrow screens; the approved icon supplies its only image. Technical detail uses the browser's native disclosure marker and an accent summary, followed by indented secondary text when open.
 
+### Comparison, FAQ, and documentation
+
+Comparisons use a simple two-column table with row and column headings, fine
+horizontal rules, and no enclosing card. FAQ entries use native disclosure
+controls. The manual reuses the same typography and surfaces, with a sticky
+13rem contents column beside the reading column on wide screens; below 900px
+the contents become a wrapping list above the document. Commands wrap within
+plain inset code blocks, and section anchors retain a visible scroll margin.
+
 ## Do's and Don'ts
 
 ### Do

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation — Hitoiki</title>
+  <meta name="description" content="How to use Hitoiki: installation, shell commands, SSH, sudo, password input, output, cancellation, and troubleshooting.">
+  <meta name="theme-color" content="#faf7f3">
+  <link rel="canonical" href="https://hitoiki.sageframe.net/docs/">
+  <link rel="icon" href="/assets/hitoiki-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to documentation</a>
+  <div class="page docs-page">
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Hitoiki home">
+        <img src="/assets/hitoiki-icon.svg" width="36" height="36" alt="">
+        <span>hitoiki</span><span class="kanji" lang="ja">一息</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="/">Overview</a>
+        <a href="/docs/" aria-current="page">Documentation</a>
+        <a href="/#get">Get Hitoiki</a>
+      </nav>
+    </header>
+
+    <div class="docs-layout">
+      <nav class="docs-toc" aria-label="Documentation sections">
+        <p>On this page</p>
+        <div class="toc-links">
+          <a href="#installation">Installation</a>
+          <a href="#first-command">Your first command</a>
+          <a href="#keyboard">Keyboard and panel</a>
+          <a href="#shell">Shell and environment</a>
+          <a href="#ssh">SSH commands</a>
+          <a href="#sudo">Sudo and passwords</a>
+          <a href="#output">Output and copying</a>
+          <a href="#stopping">Stopping commands</a>
+          <a href="#terminal">Open in Terminal</a>
+          <a href="#agents">Working with an agent</a>
+          <a href="#privacy">Privacy and permissions</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#building">Building from source</a>
+        </div>
+      </nav>
+
+      <main class="manual" id="main">
+        <h1>Documentation.</h1>
+        <p class="lede">Hitoiki runs one shell command in a floating Mac panel.
+          Enter the command, read its output, and dismiss the panel when you finish.</p>
+
+        <section id="installation" aria-labelledby="installation-heading">
+          <h2 id="installation-heading">Installation</h2>
+          <p>Hitoiki requires macOS 14 or later. It uses the shell and
+            <code>/usr/bin/ssh</code> already installed on your Mac.</p>
+          <ol>
+            <li>Get the Hitoiki disk image from the <a href="/#get">download section</a>.
+              GitHub provides the free download; the optional Payhip purchase supports development.</li>
+            <li>Open the <code>.dmg</code> and drag Hitoiki to Applications.</li>
+            <li>Launch Hitoiki from Applications.</li>
+            <li>Press <kbd>Control-Command-Space</kbd> to bring up the panel.</li>
+          </ol>
+          <p>The app runs without a Dock icon. Opening Hitoiki again from Applications
+            brings the panel forward if it is already running.</p>
+          <p class="note">The default shortcut conflicts with macOS Character Viewer
+            when that shortcut is enabled. Hitoiki reports an unavailable shortcut.
+            Reassign the conflicting macOS shortcut, then reopen Hitoiki.</p>
+        </section>
+
+        <section id="first-command" aria-labelledby="first-heading">
+          <h2 id="first-heading">Your first command</h2>
+          <ol>
+            <li>Invoke the panel and type <code>uptime</code>.</li>
+            <li>Press <kbd>Return</kbd>. Output appears below the command as it runs.</li>
+            <li>Read the exit status when the command finishes.</li>
+            <li>Select text to copy, or use the Copy control to copy the retained output.</li>
+            <li>Press <kbd>Escape</kbd> to dismiss the completed result.</li>
+          </ol>
+          <p>Hitoiki runs one command at a time. A command can use pipes, quoting,
+            redirection, and other syntax your shell understands.</p>
+          <pre><code>uptime
+df -h
+printf 'hello\n' | tr '[:lower:]' '[:upper:]'</code></pre>
+        </section>
+
+        <section id="keyboard" aria-labelledby="keyboard-heading">
+          <h2 id="keyboard-heading">Keyboard and panel</h2>
+          <table>
+            <thead><tr><th scope="col">Control</th><th scope="col">Action</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><kbd>Control-Command-Space</kbd></th><td>Invoke the panel.</td></tr>
+              <tr><th scope="row"><kbd>Return</kbd></th><td>Run the entered command. Also accepts an offered SSH retry when the input is empty.</td></tr>
+              <tr><th scope="row"><kbd>Command-V</kbd></th><td>Paste a command before execution, or forward clipboard text to the running command.</td></tr>
+              <tr><th scope="row"><kbd>Control-C</kbd> or Stop</th><td>Interrupt the local process group. A second Stop forces termination.</td></tr>
+              <tr><th scope="row"><kbd>Command-C</kbd> or Copy</th><td>Copy selected text, or retained output when no text is selected.</td></tr>
+              <tr><th scope="row"><kbd>Escape</kbd></th><td>Dismiss the panel after the command has finished.</td></tr>
+              <tr><th scope="row">Open in Terminal</th><td>Open a terminal at the command's working directory after completion.</td></tr>
+            </tbody>
+          </table>
+          <p>While a command runs, typed characters, Return, Delete, and pasted text
+            go to that command. Full-screen controls and cursor-key interaction are
+            outside Hitoiki's intended use.</p>
+          <p>Dismissal clears the displayed transcript. Copy output you want to keep
+            before dismissing the panel.</p>
+        </section>
+
+        <section id="shell" aria-labelledby="shell-heading">
+          <h2 id="shell-heading">Shell and environment</h2>
+          <p>Each command runs in a new, non-interactive shell process. Hitoiki
+            captures the environment from your login shell when the app starts,
+            including exported variables such as <code>PATH</code>.</p>
+          <p>Interactive aliases and functions are not available. Use the real
+            command, an executable script, or an SSH host alias defined in
+            <code>~/.ssh/config</code>.</p>
+          <p>Commands start in your home directory by default. To work elsewhere,
+            include the directory change and command in the same line:</p>
+          <pre><code>cd "$HOME/Projects/example" &amp;&amp; git status --short</code></pre>
+          <p>A <code>cd</code> or variable assignment does not change the next
+            command's shell. File changes and other effects of a command still persist.</p>
+          <p>If an installed tool is missing from <code>PATH</code>, restart
+            Hitoiki after updating your login-shell environment, or use the tool's full path.</p>
+          <h3>How execution works</h3>
+          <p>The shell runs inside a pseudoterminal (PTY), the operating-system
+            interface that provides terminal input and output to a process.
+            Hitoiki forwards keystrokes to the process and renders the bytes it
+            sends back. This is what allows ordinary SSH and sudo prompts to work.</p>
+        </section>
+
+        <section id="ssh" aria-labelledby="ssh-heading">
+          <h2 id="ssh-heading">SSH commands</h2>
+          <p>Enter the complete SSH command, including the destination and the command
+            to run there. Your shell resolves <code>ssh</code> through its captured
+            <code>PATH</code>, using that client's configuration, keys, known hosts,
+            and SSH agent.</p>
+          <pre><code>ssh server 'uptime'
+ssh server 'df -h'
+ssh user@server 'uname -a'</code></pre>
+          <p>A host name such as <code>server</code> can be a normal network name
+            or an alias in <code>~/.ssh/config</code>. Hitoiki has no separate
+            host list, connection credentials, or SSH configuration to maintain.</p>
+          <p>To select the SSH client bundled with macOS explicitly, enter
+            <code>/usr/bin/ssh</code> instead of <code>ssh</code>.</p>
+          <p>Quote the remote command so your local shell does not expand it first.
+            These single quotes make <code>$HOME</code> refer to the remote account:</p>
+          <pre><code>ssh server 'ls -la "$HOME"'</code></pre>
+          <p>Use a terminal for a persistent remote shell, tmux session, or
+            full-screen remote application.</p>
+        </section>
+
+        <section id="sudo" aria-labelledby="sudo-heading">
+          <h2 id="sudo-heading">Sudo and password input</h2>
+          <p>Local commands can request sudo in the usual way. Remote sudo often
+            needs an allocated terminal; request one with <code>ssh -tt</code>:</p>
+          <pre><code>ssh -tt server 'sudo systemctl status nginx --no-pager'</code></pre>
+          <p>When the running command asks for a password, type or paste it and
+            press Return. Input goes directly to the running process.
+            Normal SSH and sudo password prompts disable terminal echo, so no
+            password characters or placeholder dots appear in the transcript.</p>
+          <p>Hitoiki does not infer password prompts from their text or open a
+            separate password field. A program that deliberately echoes input
+            can display that input; its terminal behavior determines what comes back.</p>
+          <h3>Retry with a remote terminal</h3>
+          <p>If a simple SSH command fails with sudo's message that a terminal is
+            required to read the password, Hitoiki offers Retry with <code>-tt</code>.
+            Accepting the offer reruns the command with a remote terminal requested.</p>
+          <p>The retry is offered for commands beginning with <code>ssh </code>
+            when a terminal option is not already present. For more complex shell
+            expressions, enter <code>-tt</code> yourself where appropriate.</p>
+          <p>Sudo's policy, password requirements, and credential timeout belong to
+            the machine running sudo. Hitoiki does not change that configuration.</p>
+        </section>
+
+        <section id="output" aria-labelledby="output-heading">
+          <h2 id="output-heading">Output, exit status, and copying</h2>
+          <p>Standard output and standard error share the terminal transcript.
+            Text appears as it arrives, with basic terminal colors and
+            carriage-return updates such as progress counters.</p>
+          <p>The exit status follows completion. Exit 0 ordinarily means success;
+            a nonzero exit is the command's reported failure. A signal status
+            means the process was terminated by a signal.</p>
+          <p>Use text selection and <kbd>Command-C</kbd>, or the Copy control.
+            With no selection, Copy uses the retained transcript. Copied output
+            is plain text.</p>
+          <p>The retained transcript is bounded to 10,000 completed lines and
+            10 MiB of output, with a 1 MiB limit for a single line in progress.
+            Old content is dropped as limits are reached. Redirect output to a
+            file when you need a complete record:</p>
+          <pre><code>ssh server 'journalctl -u nginx --no-pager' &gt; "$HOME/nginx.log"</code></pre>
+          <p>Hitoiki renders command output rather than a complete terminal screen.
+            Use a terminal for cursor-addressed interfaces and full-screen programs.</p>
+        </section>
+
+        <section id="stopping" aria-labelledby="stopping-heading">
+          <h2 id="stopping-heading">Stopping commands</h2>
+          <p>Stop or <kbd>Control-C</kbd> first sends <code>SIGINT</code>, the
+            normal interrupt signal, to the local process group. A second Stop
+            sends <code>SIGKILL</code>, which forces that group to terminate.</p>
+          <p>After Stop, Hitoiki stops drawing further output from that run.
+            Quitting the app also terminates its owned local command.</p>
+          <p class="note">Interrupting the local SSH process does not guarantee
+            that the remote command stops. In particular, a remote command run
+            without an allocated terminal can continue after SSH disconnects.
+            Check the remote host when cancellation consequences matter.</p>
+          <p>Stopping a command does not undo changes it has already made.</p>
+        </section>
+
+        <section id="terminal" aria-labelledby="terminal-heading">
+          <h2 id="terminal-heading">Open in Terminal</h2>
+          <p>After completion, Open in Terminal opens a terminal at the command's
+            working directory. Terminal.app is the default.</p>
+          <p>It opens a new terminal for further work. It does not rerun the command
+            or transfer the existing transcript into the terminal.</p>
+        </section>
+
+        <section id="agents" aria-labelledby="agents-heading">
+          <h2 id="agents-heading">Working with a coding agent</h2>
+          <p>Hitoiki accepts command text from any source. When an agent gives
+            you a command requiring access you want to keep under your own
+            control, run it yourself:</p>
+          <ol>
+            <li>Ask for the command and the machine and directory where it should run.</li>
+            <li>Copy it into Hitoiki and review the command, host, and paths.</li>
+            <li>Press Return and enter any required password yourself.</li>
+            <li>Copy the relevant output back to the conversation.</li>
+          </ol>
+          <p>You can keep the agent's permissions restricted while doing this.
+            Hitoiki does not connect to the agent, grant it privileges, inspect
+            its command, or enforce its permission settings.</p>
+        </section>
+
+        <section id="privacy" aria-labelledby="privacy-heading">
+          <h2 id="privacy-heading">Privacy and permissions</h2>
+          <p>Hitoiki has no account or telemetry. Transcripts stay in memory;
+            interactive responses are forwarded to the command rather than saved
+            as a separate input record. Your Mac's clipboard contains text you copy.</p>
+          <p>Commands execute with your account's normal permissions. Sudo can
+            elevate privileges according to local or remote policy. Hitoiki
+            does not sandbox commands or make destructive commands harmless.</p>
+          <p>The command itself can read files, write files, contact remote services,
+            print sensitive values, or produce logs. SSH host checks, authentication,
+            and key handling remain the installed SSH client's responsibility.</p>
+        </section>
+
+        <section id="troubleshooting" aria-labelledby="troubleshooting-heading">
+          <h2 id="troubleshooting-heading">Troubleshooting</h2>
+          <h3>The shortcut opens Character Viewer or does nothing</h3>
+          <p>Another app or macOS may own <kbd>Control-Command-Space</kbd>.
+            Check Keyboard Shortcuts in System Settings, reassign the conflicting
+            shortcut, and reopen Hitoiki. Opening Hitoiki from Applications brings
+            the panel forward while the app is running.</p>
+          <h3>A command is not found</h3>
+          <p>Use the executable's full path and check your exported
+            <code>PATH</code>. Interactive aliases and functions are not loaded.
+            Restart Hitoiki to capture changes to the login-shell environment.</p>
+          <h3>SSH cannot connect or authentication fails</h3>
+          <p>Check the same host and SSH command in a terminal. Run
+            <code>command -v ssh</code> in both places to confirm which client
+            your shell finds. Verify network reachability, host configuration,
+            keys, and agent access with that client.</p>
+          <h3>Sudo says it needs a terminal</h3>
+          <p>Accept the offered Retry, or add <code>-tt</code> to the SSH command.
+            Type the password when the remote command requests it.</p>
+          <h3>The first command takes a few seconds to start</h3>
+          <p>The first command waits for the login-shell environment capture.
+            Shell startup files can delay it. If capture fails or times out,
+            Hitoiki reports the failure and uses the app's existing environment.</p>
+          <h3>Output is incomplete or a program looks wrong</h3>
+          <p>Retained output has limits, and full terminal emulation is outside
+            Hitoiki's scope. Save large output to a file or use a terminal for
+            full-screen programs.</p>
+          <h3>A stopped SSH command is still running remotely</h3>
+          <p>Check the process on the remote host and stop it there if needed.
+            Stopping the local SSH process cannot guarantee remote cleanup.</p>
+        </section>
+
+        <section id="building" aria-labelledby="building-heading">
+          <h2 id="building-heading">Building from source</h2>
+          <p>The app is written in Swift 6, uses Swift Package Manager, and has
+            no third-party package dependencies. Building requires macOS and
+            a Swift 6 toolchain.</p>
+          <p>From a checkout of the application repository:</p>
+          <pre><code>swift build
+swift test</code></pre>
+          <p>The repository's README contains the current development and
+            packaging instructions. The application source is licensed under MIT.</p>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>Made by <a href="https://atmarcus.net">Andrew Marcus</a> · <a href="https://sageframe.net">Sageframe</a></p>
+      <p><a href="https://github.com/sageframe-dharma/hitoiki-web">Website source</a><span lang="ja">一息</span> · one breath</p>
+    </footer>
+  </div>
+</body>
+</html>
