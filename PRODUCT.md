@@ -28,6 +28,10 @@ SSH configuration and keys, terminal input, and terminal echo settings for
 password prompts. `/usr/bin/ssh` can be selected explicitly in a command.
 It targets macOS 14 or later.
 
+The app contacts GitHub to check for a newer version. Automatic update checks
+are on by default and can be disabled in Settings. This is separate from network
+requests made by commands the user runs; the app collects no telemetry.
+
 The practitioner explicitly requested release-oriented website copy, rather
 than coming-soon language. Describe the application in the present tense and
 provide a full manual and FAQ. Actual GitHub release and Payhip product links
