@@ -87,8 +87,9 @@ figcaption { color: var(--muted); font-size: .75rem; line-height: 1.5; margin-to
 .real-app { border-top: 1px solid var(--rule); padding: 2.8rem 0 3rem; scroll-margin-top: 2rem; }
 .real-app h2 { margin-bottom: 1.5rem; }
 .recording { margin: 0 auto; max-width: 52rem; }
-.recording video { display: block; width: 100%; height: auto; border-radius: 6px; background: var(--ground-deep); box-shadow: 0 12px 32px -12px #28302638; }
-.recording figcaption { max-width: 62ch; }
+.recording video { display: block; width: 100%; height: auto; border-radius: 14px; background: var(--ground-deep); box-shadow: 0 12px 32px -12px #28302638; }
+.recording figcaption { max-width: 70ch; }
+.recording .text-button { margin-left: .4rem; color: var(--accent); font-size: inherit; padding: 0; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .shot { width: 100%; height: auto; margin: 1.1rem 0; }
 .manual .shot { margin: 1.25rem 0; }
 .manual .shot-narrow { max-width: 22rem; }

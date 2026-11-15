@@ -83,11 +83,12 @@
         <h2 id="real-app-heading">The app itself.</h2>
         <figure class="recording">
           <video id="demo-video" src="/assets/screens/demo.mp4" poster="/assets/screens/demo-poster.webp"
-            width="800" height="396" muted loop playsinline controls preload="metadata"
+            width="800" height="396" autoplay muted loop playsinline preload="auto"
             aria-describedby="recording-caption"></video>
           <figcaption id="recording-caption">A screen recording of Hitoiki 1.0: <code>uptime</code>,
             <code>ls -la -G</code>, an SSH command and <code>df -h /</code>, then the history
-            list and the menu bar item. No sound.</figcaption>
+            list and the menu bar item. No sound.
+            <button class="text-button" id="demo-toggle" type="button" hidden>Pause</button></figcaption>
         </figure>
       </section>
 

@@ -111,8 +111,22 @@ copyButton.addEventListener("click", async () => {
   }
 });
 
-// The real-app recording plays only when the visitor has not asked for reduced motion.
+// The real-app recording plays on its own unless the visitor has asked for
+// reduced motion. The Pause/Play control lets anyone stop it.
 const demo = document.getElementById("demo-video");
-if (demo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  demo.play().catch(() => {});
+const demoToggle = document.getElementById("demo-toggle");
+if (demo && demoToggle) {
+  const label = () => { demoToggle.textContent = demo.paused ? "Play" : "Pause"; };
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    demo.pause();
+  } else {
+    demo.play().catch(() => {});
+  }
+  demoToggle.hidden = false;
+  demoToggle.addEventListener("click", () => {
+    if (demo.paused) { demo.play().catch(() => {}); } else { demo.pause(); }
+  });
+  demo.addEventListener("play", label);
+  demo.addEventListener("pause", label);
+  label();
 }
