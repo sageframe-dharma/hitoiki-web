@@ -44,9 +44,9 @@ p code { font-size: .86em; overflow-wrap: anywhere; }
 .skip-link:focus { top: 1rem; }
 
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.6rem 0; }
-.wordmark { display: inline-flex; gap: .65rem; align-items: center; color: var(--ink); text-decoration: none; }
-.wordmark > span:first-of-type { font-size: 1.3rem; font-weight: 600; letter-spacing: -.025em; }
-.wordmark .kanji { color: var(--muted); font-size: .85rem; margin-left: .2rem; }
+.wordmark { display: inline-flex; gap: .8rem; align-items: center; color: var(--ink); text-decoration: none; }
+.wordmark > span:first-of-type { font-size: 1.65rem; font-weight: 600; letter-spacing: -.025em; }
+.wordmark .kanji { color: var(--muted); font-size: 1.3rem; margin-left: .15rem; }
 nav { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem 1.7rem; }
 nav a { font-size: .85rem; color: var(--muted); text-decoration: none; padding-block: .4rem; }
 nav a:last-child { color: var(--accent); }
@@ -133,9 +133,12 @@ summary::marker { font-size: .7rem; }
 .release .release-note { font-size: .8rem; }
 footer { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; padding: 2.1rem 0 1.7rem; font-size: .75rem; color: var(--muted); }
 footer p { margin: 0; }
+.colophon { flex-basis: 100%; padding-bottom: 1.4rem; border-bottom: 1px solid var(--rule); font-size: .85rem; line-height: 1.6; }
+.colophon p { max-width: 70ch; }
+.colophon p + p { margin-top: .35rem; }
 footer a { color: var(--muted); }
-footer p:last-child { display: flex; align-items: baseline; gap: .4rem; }
-footer p:last-child > a { margin-right: .8rem; }
+footer > p:last-child { display: flex; align-items: baseline; gap: .4rem; }
+footer > p:last-child > a { margin-right: .8rem; }
 
 @media (min-width: 900px) and (max-width: 1080px) {
   .intro, .feature { gap: 2rem; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
@@ -154,7 +157,10 @@ footer p:last-child > a { margin-right: .8rem; }
 }
 @media (max-width: 540px) {
   .site-header { flex-wrap: wrap; gap: 1rem; padding: 1.2rem 0; }
-  .wordmark { gap: .5rem; }
+  .wordmark { gap: .6rem; }
+  .wordmark img { width: 40px; height: 40px; }
+  .wordmark > span:first-of-type { font-size: 1.45rem; }
+  .wordmark .kanji { font-size: 1.15rem; }
   nav { width: 100%; gap: 1.5rem; }
   nav a { font-size: .8rem; }
   .intro { padding-top: 1.5rem; }
