@@ -31,8 +31,10 @@ application repository are kept unchanged in `design/screenshots/` and
 social preview at `public/assets/og-image.png`, composed from the panel
 screenshot on the site's ground colour.
 
-The signed app is sold on Payhip; building from source is free. The Payhip
-product link goes in the Get Hitoiki section of `public/index.html`. Never
+The signed app is sold on Payhip at <https://payhip.com/b/2Tgu0>; building
+from source is free. The link is in the Get Hitoiki section of
+`public/index.html`; the header's Buy button scrolls to that section. The
+Payhip gallery images and listing copy are in `design/payhip/`. Never
 reuse m4Bookmaker's product URL for Hitoiki.
 
 ## Publication

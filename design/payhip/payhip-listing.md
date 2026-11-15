@@ -1,5 +1,7 @@
 # Payhip listing — Hitoiki
 
+Live product: <https://payhip.com/b/2Tgu0>
+
 Copy for the Payhip product page, modelled on m4Bookmaker's. Paste the fields
 below into Payhip; upload the images in this folder in their numbered order.
 
