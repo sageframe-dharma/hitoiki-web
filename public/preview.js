@@ -110,3 +110,9 @@ copyButton.addEventListener("click", async () => {
     status.textContent = "Output selected. Press Command-C or Control-C to copy.";
   }
 });
+
+// The real-app recording plays only when the visitor has not asked for reduced motion.
+const demo = document.getElementById("demo-video");
+if (demo && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  demo.play().catch(() => {});
+}

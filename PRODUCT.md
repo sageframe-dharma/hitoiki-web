@@ -21,7 +21,7 @@ invoke, enter a command, read output, copy, dismiss.
 ## Product truth
 
 Hitoiki is the public name selected in the November 4, 2026 conversation. The
-application checkout remains `sageframe-no-kaji-dev/issoku`; do not rename or
+application checkout is `sageframe-no-kaji-dev/hitoiki`; do not rename or
 publish that application as a side effect of website work. It uses the system
 shell, the SSH command resolved through that shell's captured PATH, existing
 SSH configuration and keys, terminal input, and terminal echo settings for
@@ -36,9 +36,11 @@ The practitioner explicitly requested release-oriented website copy, rather
 than coming-soon language. Describe the application in the present tense and
 provide a full manual and FAQ. Actual GitHub release and Payhip product links
 still need verified destinations; never substitute another product's checkout.
-Do not describe unimplemented settings, macros, or history controls as working.
-The agreed distribution direction is a free GitHub download with optional paid
-support. The intended application license is MIT.
+Settings, macros, history, and the menu bar item ship in v1.0.0; describe them
+as the application README does.
+Distribution, as the application README states it since v1.0.0: the signed,
+notarized app is sold on Payhip for $6; building from source is free under the
+MIT license. Both are the same code. The GitHub release carries no app binary.
 
 ## Brand commitments
 
@@ -59,10 +61,12 @@ configured shell actions.
 
 ## Evidence
 
-Application README, Kamae 6, and the actual source in the Issoku checkout are
-available. The approved icon is available as SVG. No approved product recording
-or screenshot has been supplied; the browser preview is illustrative, with
-sample output and no connection to a local shell or remote machine.
+Application README, Kamae 6, and the source in the `hitoiki` checkout are
+available. The approved icon is available as SVG. The README's screenshots and
+screen recording are copied unchanged into `design/screenshots/`; the site serves
+WebP and MP4 derivatives from `public/assets/screens/`. The browser preview is
+illustrative, with sample output and no connection to a local shell or remote
+machine, and the page shows the real recording beside it.
 
 ## Accessibility
 

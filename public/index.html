@@ -3,13 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hitoiki — a shell command runner for Mac</title>
-  <meta name="description" content="A floating shell command runner for Mac. Invoke it like Spotlight or Windows Run, run a local or SSH command, and read the output in the same panel.">
+  <title>Hitoiki — a command runner for Mac</title>
+  <meta name="description" content="Hitoiki runs a shell command from a floating panel. Press a shortcut, type a command, see the output, and dismiss the panel. Locally or over SSH, with your own shell, configuration and keys.">
   <meta name="theme-color" content="#faf7f3">
-  <meta property="og:title" content="Hitoiki — a shell command runner for Mac">
-  <meta property="og:description" content="Invoke it like Spotlight or Windows Run. Enter a shell command and read its output in the same panel, locally or over SSH.">
+  <meta property="og:title" content="Hitoiki — a command runner for Mac">
+  <meta property="og:description" content="Press a shortcut, type a command, see the output, and dismiss the panel. Locally or over SSH, with your own shell, configuration and keys.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hitoiki.sageframe.net/">
+  <meta property="og:image" content="https://hitoiki.sageframe.net/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Hitoiki panel showing the output of ls -la -G">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://hitoiki.sageframe.net/">
   <link rel="icon" href="/assets/hitoiki-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/site.css">
@@ -35,16 +40,16 @@
       <section class="intro" aria-labelledby="intro-heading">
         <div class="intro-copy">
           <h1 id="intro-heading">A command runner<br>for Mac.</h1>
-          <p class="lede">Open it with a keyboard shortcut, like Spotlight or
-            Windows Run (<kbd>Win+R</kbd>).</p>
-          <p>Type a shell command and read its output in the same panel.
-            Run it on your Mac or over SSH, including commands that ask for a
-            password. Copy the result and dismiss the panel.</p>
+          <p class="lede">Press a shortcut, type a command, see the output,
+            and dismiss the panel.</p>
+          <p>Commands run locally or over SSH with your own shell, configuration
+            and keys, and there is no terminal window to manage. It opens the way
+            Spotlight or Windows Run (<kbd>Win+R</kbd>) does.</p>
           <div class="action-row">
             <a class="button" href="#get">Get Hitoiki</a>
             <a href="/docs/">Read the documentation</a>
           </div>
-          <p class="availability">macOS 14+ · Native Swift app · MIT license</p>
+          <p class="availability">macOS 14+ · Native Swift app · Open source, MIT</p>
         </div>
 
         <figure class="preview" id="preview" aria-labelledby="preview-caption">
@@ -68,9 +73,63 @@
               <button class="text-button" id="copy-output" type="button">Copy output</button>
             </div>
           </div>
-          <figcaption id="preview-caption">Interactive preview with sample output. No commands run here.</figcaption>
+          <figcaption id="preview-caption">Interactive preview with sample output. No commands run here.
+            <a href="#real-app">See the real app.</a></figcaption>
           <noscript><p class="no-script">Enable JavaScript to switch examples and play the preview.</p></noscript>
         </figure>
+      </section>
+
+      <section class="real-app" id="real-app" aria-labelledby="real-app-heading">
+        <h2 id="real-app-heading">The app itself.</h2>
+        <figure class="recording">
+          <video id="demo-video" src="/assets/screens/demo.mp4" poster="/assets/screens/demo-poster.webp"
+            width="800" height="396" muted loop playsinline controls preload="metadata"
+            aria-describedby="recording-caption"></video>
+          <figcaption id="recording-caption">A screen recording of Hitoiki 1.0: <code>uptime</code>,
+            <code>ls -la -G</code>, an SSH command and <code>df -h /</code>, then the history
+            list and the menu bar item. No sound.</figcaption>
+        </figure>
+      </section>
+
+      <section class="feature" id="ssh" aria-labelledby="ssh-heading">
+        <div class="section-title">
+          <h2 id="ssh-heading">Use the SSH setup <br>you already have.</h2>
+        </div>
+        <div class="section-body">
+          <p>Hitoiki runs SSH commands through your shell, using your existing
+            <code>~/.ssh/config</code>, host aliases, keys, and SSH agent.
+            Type the complete command, just as you would in a terminal.</p>
+          <img class="shot" src="/assets/screens/panel-remote.webp" width="1372" height="354" loading="lazy"
+            alt="The Hitoiki panel after ssh koan.lan 'uptime', showing the remote uptime line and exit 0.">
+          <div class="command-examples" aria-label="SSH command examples">
+            <code>ssh server 'df -h'</code>
+            <code>ssh -tt server 'sudo systemctl status nginx --no-pager'</code>
+          </div>
+          <p>Password prompts work in the panel. Input is forwarded to the running
+            command, and password entry respects terminal echo settings.
+            If remote sudo needs a terminal, Hitoiki offers to retry with <code>-tt</code>.</p>
+          <p><a href="/docs/#ssh">SSH and sudo documentation</a></p>
+        </div>
+      </section>
+
+      <section class="feature" id="run-it-yourself" aria-labelledby="run-heading">
+        <div class="section-title">
+          <h2 id="run-heading">Run it yourself.</h2>
+        </div>
+        <div class="section-body">
+          <p>Hitoiki runs only the command text you enter, and you choose when.
+            That makes it a simple way to keep a coding agent's permissions
+            restricted: when the agent needs a command run on your Mac or a
+            remote host, you run it.</p>
+          <ol class="handoff">
+            <li>Copy the command from the conversation.</li>
+            <li>Paste it into Hitoiki, review it, and press Return.</li>
+            <li>Copy the result back to your agent.</li>
+          </ol>
+          <p>This works with any agent that gives you command text, including commands
+            using SSH or sudo. Hitoiki does not connect to the agent or grant it
+            access, and you enter any required password yourself.</p>
+        </div>
       </section>
 
       <section class="comparison" aria-labelledby="comparison-heading">
@@ -94,48 +153,14 @@
         </table>
       </section>
 
-      <section class="feature" id="ssh" aria-labelledby="ssh-heading">
-        <div class="section-title">
-          <h2 id="ssh-heading">Use the SSH setup<br>you already have.</h2>
-        </div>
-        <div class="section-body">
-          <p>Hitoiki runs SSH commands through your shell, using your existing
-            <code>~/.ssh/config</code>, host aliases, keys, and SSH agent.
-            Type the complete command, just as you would in a terminal.</p>
-          <div class="command-examples" aria-label="SSH command examples">
-            <code>ssh server 'df -h'</code>
-            <code>ssh -tt server 'sudo systemctl status nginx --no-pager'</code>
-          </div>
-          <p>Password prompts work in the panel. Input is forwarded to the running
-            command, and password entry respects terminal echo settings.
-            If remote sudo needs a terminal, Hitoiki offers to retry with <code>-tt</code>.</p>
-          <p><a href="/docs/#ssh">SSH and sudo documentation</a></p>
-        </div>
-      </section>
-
-      <section class="feature" id="agents" aria-labelledby="agents-heading">
-        <div class="section-title">
-          <h2 id="agents-heading">Your agent gives you<br>a command to run.</h2>
-        </div>
-        <div class="section-body">
-          <p>Keep your coding agent's permissions restricted. When a command needs
-            access to your Mac or a remote host, run it yourself in Hitoiki.</p>
-          <ol class="handoff">
-            <li>Copy the command from the conversation.</li>
-            <li>Paste it into Hitoiki, review it, and press Return.</li>
-            <li>Copy the result back to your agent.</li>
-          </ol>
-          <p>This works with any agent that gives you command text, including commands
-            using SSH or sudo. You choose what runs and enter any required password yourself.</p>
-        </div>
-      </section>
-
       <section class="faq" id="faq" aria-labelledby="faq-heading">
         <h2 id="faq-heading">Frequently asked questions.</h2>
         <details>
           <summary>Is Hitoiki free?</summary>
-          <div class="detail-body"><p>Yes. The app and MIT-licensed source are free on GitHub.
-            The optional Payhip purchase supports development and provides the same app.</p></div>
+          <div class="detail-body"><p>Hitoiki is open source under the MIT license.
+            You can build it yourself for free. The signed, notarized Mac download
+            costs $6 and supports continued development. Both are the same code.
+            <a href="/docs/#building">Building from source.</a></p></div>
         </details>
         <details>
           <summary>Can it run SSH commands and sudo?</summary>
@@ -152,20 +177,21 @@
         <details>
           <summary>Does it replace Terminal?</summary>
           <div class="detail-body"><p>Use Hitoiki for short commands. Use a terminal for
-            persistent sessions, full-screen applications such as Vim or htop, and work
-            that needs a complete terminal emulator.</p></div>
+            persistent sessions, full-screen programs such as <code>vim</code>, <code>htop</code>
+            and <code>tmux</code>, and work that needs a complete terminal emulator.</p></div>
         </details>
         <details>
           <summary>Does Hitoiki phone home?</summary>
-          <div class="detail-body"><p>Only to check GitHub for a newer version.
-            Automatic update checks can be turned off in Settings.</p></div>
+          <div class="detail-body"><p>Only to ask GitHub for the latest version number,
+            when it opens and once a day while it runs. It sends only its name and version,
+            and nothing about you or your commands. You can turn the check off in settings.</p></div>
         </details>
         <details>
-          <summary>Does Hitoiki save passwords or transcripts?</summary>
-          <div class="detail-body"><p>Interactive password input is forwarded to the running
-            program and is not saved by Hitoiki. Transcripts stay in memory.
-            Normal SSH and sudo password prompts disable echo, so the password does
-            not appear in the output. <a href="/docs/#privacy">Privacy details.</a></p></div>
+          <summary>Does Hitoiki save passwords or output?</summary>
+          <div class="detail-body"><p>No. Password input goes to the running program and is
+            not saved by Hitoiki. Output stays in memory and is never saved. Normal SSH and
+            sudo password prompts hide your typing, so the password does not appear in the
+            output. Command history is off by default. <a href="/docs/#privacy">Privacy details.</a></p></div>
         </details>
         <details>
           <summary>Which Macs does it run on?</summary>
@@ -176,12 +202,23 @@
 
       <section class="release" id="get" aria-labelledby="release-heading">
         <img class="release-icon" src="/assets/hitoiki-icon.svg" width="88" height="88" alt="">
-        <div>
+        <div class="release-body">
           <h2 id="release-heading">Get Hitoiki.</h2>
-          <p>Download the app free from GitHub or buy it on Payhip to support
-            development. Both downloads contain the same app.</p>
-          <!-- Insert the verified Hitoiki download and Payhip product links here. -->
-          <p class="release-note">macOS 14+ · MIT-licensed source · No account or activation</p>
+          <p>Hitoiki needs macOS 14 or later. There are two ways to get it.</p>
+          <div class="release-options">
+            <div>
+              <h3>Buy the app</h3>
+              <p>$6. Signed, notarized, and ready to install. What you pay for is
+                that convenience, and it supports continued development.</p>
+              <!-- PAYHIP: <a class="button" href="https://payhip.com/b/…">Buy Hitoiki — $6</a> -->
+            </div>
+            <div>
+              <h3>Build it yourself</h3>
+              <p>Free, under the MIT license. The source and build steps are on GitHub.</p>
+              <a class="button button-quiet" href="https://github.com/sageframe-no-kaji/hitoiki#development">Source on GitHub</a>
+            </div>
+          </div>
+          <p class="release-note">Both are the same code · No account or activation</p>
         </div>
       </section>
     </main>

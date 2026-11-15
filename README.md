@@ -24,11 +24,16 @@ accepted visual direction. The original icon is in `design/hitoiki-icon.svg`;
 the website derivative in `public/assets/` adds a squircle clip. No application
 code, repository names, or release state are changed by this site.
 
-The practitioner requested release-oriented copy. The site describes the
-application in the present tense and includes a Run/Spotlight comparison and
-FAQ. The Hitoiki GitHub release and Payhip product destinations still need to be
-provided before the download and purchase actions can be wired. Never reuse
-m4Bookmaker's product URL for Hitoiki.
+The original screenshots, screen recording, and app icon PNG from the
+application repository are kept unchanged in `design/screenshots/` and
+`design/`. The site serves derivatives from `public/assets/screens/`
+(WebP screenshots, an MP4 of the recording and its poster) and a 1200×630
+social preview at `public/assets/og-image.png`, composed from the panel
+screenshot on the site's ground colour.
+
+The signed app is sold on Payhip; building from source is free. The Payhip
+product link goes in the Get Hitoiki section of `public/index.html`. Never
+reuse m4Bookmaker's product URL for Hitoiki.
 
 ## Publication
 

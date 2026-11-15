@@ -38,6 +38,7 @@
           <a href="#output">Output and copying</a>
           <a href="#stopping">Stopping commands</a>
           <a href="#terminal">Open in Terminal</a>
+          <a href="#settings">Settings, macros, history</a>
           <a href="#agents">Working with an agent</a>
           <a href="#privacy">Privacy and permissions</a>
           <a href="#troubleshooting">Troubleshooting</a>
@@ -47,16 +48,18 @@
 
       <main class="manual" id="main">
         <h1>Documentation.</h1>
-        <p class="lede">Hitoiki runs one shell command in a floating Mac panel.
-          Enter the command, read its output, and dismiss the panel when you finish.</p>
+        <p class="lede">Hitoiki runs a shell command from a floating panel.
+          Press a shortcut, type a command, see the output, and dismiss the panel.</p>
 
         <section id="installation" aria-labelledby="installation-heading">
           <h2 id="installation-heading">Installation</h2>
           <p>Hitoiki requires macOS 14 or later.
             It uses your installed shell and SSH client.</p>
+          <p>There are two ways to get it: buy the signed, notarized app, or
+            <a href="#building">build it yourself</a> for free under the MIT license.
+            Both are the same code.</p>
           <ol>
-            <li>Get the Hitoiki disk image from the <a href="/#get">download section</a>.
-              GitHub provides the free download; the optional Payhip purchase supports development.</li>
+            <li>Buy the Hitoiki disk image from the <a href="/#get">Get Hitoiki section</a>.</li>
             <li>Open the <code>.dmg</code> and drag Hitoiki to Applications.</li>
             <li>Launch Hitoiki from Applications.</li>
             <li>Press <kbd>Control-Command-Space</kbd> to bring up the panel.</li>
@@ -75,8 +78,10 @@
             <li>Press <kbd>Return</kbd>. Output appears below the command as it runs.</li>
             <li>Read the exit status when the command finishes.</li>
             <li>Select text to copy, or use the Copy control to copy the retained output.</li>
-            <li>Press <kbd>Escape</kbd> to dismiss the completed result.</li>
+            <li>Press <kbd>Escape</kbd> to clear the result, and again to hide the panel.</li>
           </ol>
+          <img class="shot" src="/assets/screens/panel-local.webp" width="1372" height="594" loading="lazy"
+            alt="The Hitoiki panel after ls -la -G in a sample folder, with the listing, exit 0, Open in Terminal and Copy.">
           <p>Hitoiki runs one command at a time. A command can use pipes, quoting,
             redirection, and other syntax your shell understands.</p>
           <pre><code>uptime
@@ -94,15 +99,19 @@ printf 'hello\n' | tr '[:lower:]' '[:upper:]'</code></pre>
               <tr><th scope="row"><kbd>Command-V</kbd></th><td>Paste a command before execution, or forward clipboard text to the running command.</td></tr>
               <tr><th scope="row"><kbd>Control-C</kbd> or Stop</th><td>Interrupt the local process group. A second Stop forces termination.</td></tr>
               <tr><th scope="row"><kbd>Command-C</kbd> or Copy</th><td>Copy selected text, or retained output when no text is selected.</td></tr>
-              <tr><th scope="row"><kbd>Escape</kbd></th><td>Dismiss the panel after the command has finished.</td></tr>
+              <tr><th scope="row"><kbd>Escape</kbd></th><td>One step at a time: stop a running command, then clear the panel, then hide an empty panel.</td></tr>
+              <tr><th scope="row"><kbd>Command-1</kbd> to <kbd>Command-9</kbd></th><td>Put a macro's text in the input. Nothing runs until you press Return.</td></tr>
+              <tr><th scope="row"><kbd>Down Arrow</kbd>, <kbd>Right Arrow</kbd></th><td>With history on, show past commands, or take the grey suggestion after the cursor.</td></tr>
+              <tr><th scope="row"><kbd>Command-,</kbd></th><td>Open settings. The gear in the panel does the same.</td></tr>
               <tr><th scope="row">Open in Terminal</th><td>Open a terminal at the command's working directory after completion.</td></tr>
             </tbody>
           </table>
           <p>While a command runs, typed characters, Return, Delete, and pasted text
             go to that command. Full-screen controls and cursor-key interaction are
             outside Hitoiki's intended use.</p>
-          <p>Dismissal clears the displayed transcript. Copy output you want to keep
-            before dismissing the panel.</p>
+          <p>A click outside the panel hides it and keeps what is on it, but never
+            while a command runs. Clearing the panel discards the output, so copy
+            what you want to keep first.</p>
         </section>
 
         <section id="shell" aria-labelledby="shell-heading">
@@ -213,6 +222,40 @@ ssh user@server 'uname -a'</code></pre>
             or transfer the existing transcript into the terminal.</p>
         </section>
 
+        <section id="settings" aria-labelledby="settings-heading">
+          <h2 id="settings-heading">Settings, macros, and history</h2>
+          <p>Press <kbd>Command-,</kbd> or click the gear in the panel to open settings.</p>
+          <img class="shot shot-settings" src="/assets/screens/settings.webp" width="1264" height="1640" loading="lazy"
+            alt="The Hitoiki settings window: shortcut, starting folder, terminal, appearance, history, menu bar, Open at Login, update checks, and macros.">
+          <ul>
+            <li><strong>Shortcut.</strong> <kbd>Control-Command-Space</kbd> by default. If another
+              app or macOS already holds the shortcut, Hitoiki says so in the panel and in settings.</li>
+            <li><strong>Commands start in.</strong> Your home folder, or a fixed folder you choose.</li>
+            <li><strong>Open in Terminal uses.</strong> Terminal.app by default; Ghostty, iTerm2,
+              Kitty, WezTerm or Alacritty when installed, or another terminal.</li>
+            <li><strong>Macros.</strong> Nine slots. <kbd>Command-1</kbd> to <kbd>Command-9</kbd>
+              put a macro's text in the input; nothing runs until you press Return.</li>
+            <li><strong>Open at Login.</strong> Off by default. macOS keeps this setting, so it also
+              shows in System Settings › General › Login Items.</li>
+            <li><strong>Check for updates automatically.</strong> On by default. See
+              <a href="#privacy">Privacy</a>.</li>
+          </ul>
+          <h3>History</h3>
+          <p>History is off by default. When you turn it on, Hitoiki keeps the commands
+            you run in <code>~/Library/Application Support/Hitoiki/history.txt</code>, one per line.
+            A line that starts with a space is kept nowhere; in a command of several lines,
+            each line is kept or left on its own. <kbd>Down Arrow</kbd> shows past commands,
+            and <kbd>Right Arrow</kbd> takes the grey suggestion after the cursor.
+            Clear History in settings deletes the file.</p>
+          <img class="shot" src="/assets/screens/history.webp" width="1372" height="332" loading="lazy"
+            alt="The list of past commands under the Hitoiki input, with one selected.">
+          <h3>Menu bar item</h3>
+          <p>Off by default; turn it on in settings. Its menu has Show Hitoiki, About Hitoiki,
+            Check for Updates…, Settings… and Quit.</p>
+          <img class="shot shot-narrow" src="/assets/screens/menu.webp" width="584" height="412" loading="lazy"
+            alt="The Hitoiki menu bar item's menu: Show Hitoiki, About Hitoiki, Check for Updates, Settings, Quit.">
+        </section>
+
         <section id="agents" aria-labelledby="agents-heading">
           <h2 id="agents-heading">Working with a coding agent</h2>
           <p>Hitoiki accepts command text from any source. When an agent gives
@@ -233,7 +276,11 @@ ssh user@server 'uname -a'</code></pre>
           <h2 id="privacy-heading">Privacy and permissions</h2>
           <p>Hitoiki contacts GitHub to check whether a newer version is available.
             Automatic update checks are on by default and can be turned off in Settings.</p>
-          <p>Hitoiki has no account or telemetry. Transcripts stay in memory;
+          <p>Hitoiki has no account or telemetry. Each check sends only the app's
+            name and version, and nothing about you or your commands; GitHub sees your
+            internet address, as any website does. Command history is off by default
+            and, when on, is kept only in the file named under
+            <a href="#settings">History</a>. Transcripts stay in memory;
             interactive responses are forwarded to the command rather than saved
             as a separate input record. Your Mac's clipboard contains text you copy.</p>
           <p>Commands execute with your account's normal permissions. Sudo can
@@ -284,8 +331,11 @@ ssh user@server 'uname -a'</code></pre>
           <p>From a checkout of the application repository:</p>
           <pre><code>swift build
 swift test</code></pre>
-          <p>The repository's README contains the current development and
-            packaging instructions. The application source is licensed under MIT.</p>
+          <p>To build the app bundle for your Mac, run
+            <code>ARCH_FLAGS="" ./scripts/build_macos.sh</code>, which writes
+            <code>dist/Hitoiki.app</code>. The
+            <a href="https://github.com/sageframe-no-kaji/hitoiki#development">repository's README</a>
+            has the current development instructions. The source is licensed under MIT.</p>
         </section>
       </main>
     </div>
