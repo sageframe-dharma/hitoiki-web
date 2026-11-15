@@ -44,6 +44,7 @@
           <a href="#agents">Working with an agent</a>
           <a href="#privacy">Privacy and permissions</a>
           <a href="#troubleshooting">Troubleshooting</a>
+          <a href="#removing">Removing Hitoiki</a>
           <a href="#building">Building from source</a>
         </div>
       </nav>
@@ -61,16 +62,16 @@
             <a href="#building">build it yourself</a> for free under the MIT license.
             Both are the same code.</p>
           <ol>
-            <li>Buy the Hitoiki disk image from the <a href="/#get">Get Hitoiki section</a>.</li>
-            <li>Open the <code>.dmg</code> and drag Hitoiki to Applications.</li>
+            <li>Buy Hitoiki from the <a href="/#get">Get Hitoiki section</a>. The download is a ZIP file.</li>
+            <li>Open the ZIP file, open the <code>.dmg</code> inside it, and drag Hitoiki to Applications.</li>
             <li>Launch Hitoiki from Applications.</li>
             <li>Press <kbd>Control-Command-Space</kbd> to bring up the panel.</li>
           </ol>
           <p>The app runs without a Dock icon. Opening Hitoiki again from Applications
             brings the panel forward if it is already running.</p>
-          <p class="note">The default shortcut conflicts with macOS Character Viewer
-            when that shortcut is enabled. Hitoiki reports an unavailable shortcut.
-            Reassign the conflicting macOS shortcut, then reopen Hitoiki.</p>
+          <p class="note">On Macs where Control-Command-Space also opens the Character Viewer,
+            Hitoiki takes the shortcut. To keep the Character Viewer on it, choose another
+            shortcut for Hitoiki in settings.</p>
         </section>
 
         <section id="first-command" aria-labelledby="first-heading">
@@ -99,11 +100,11 @@ printf 'hello\n' | tr '[:lower:]' '[:upper:]'</code></pre>
               <tr><th scope="row"><kbd>Control-Command-Space</kbd></th><td>Invoke the panel.</td></tr>
               <tr><th scope="row"><kbd>Return</kbd></th><td>Run the entered command. Also accepts an offered SSH retry when the input is empty.</td></tr>
               <tr><th scope="row"><kbd>Command-V</kbd></th><td>Paste a command before execution, or forward clipboard text to the running command.</td></tr>
-              <tr><th scope="row"><kbd>Control-C</kbd> or Stop</th><td>Interrupt the local process group. A second Stop forces termination.</td></tr>
+              <tr><th scope="row"><kbd>Control-C</kbd> or Stop</th><td>Interrupt the local process group. A second Stop or <kbd>Control-C</kbd> forces termination.</td></tr>
               <tr><th scope="row"><kbd>Command-C</kbd> or Copy</th><td>Copy selected text, or retained output when no text is selected.</td></tr>
-              <tr><th scope="row"><kbd>Escape</kbd></th><td>One step at a time: stop a running command, then clear the panel, then hide an empty panel.</td></tr>
+              <tr><th scope="row"><kbd>Escape</kbd></th><td>One step at a time: stop a running command, close the list of past commands, clear the panel, then hide an empty panel.</td></tr>
               <tr><th scope="row"><kbd>Command-1</kbd> to <kbd>Command-9</kbd></th><td>Put a macro's text in the input. Nothing runs until you press Return.</td></tr>
-              <tr><th scope="row"><kbd>Down Arrow</kbd>, <kbd>Right Arrow</kbd></th><td>With history on, show past commands, or take the grey suggestion after the cursor.</td></tr>
+              <tr><th scope="row"><kbd>Down Arrow</kbd>, <kbd>Right Arrow</kbd></th><td>Show past commands, or take the grey suggestion after the cursor. Neither runs anything.</td></tr>
               <tr><th scope="row"><kbd>Command-,</kbd></th><td>Open settings. The gear in the panel does the same.</td></tr>
               <tr><th scope="row">Open in Terminal</th><td>Open a terminal at the command's working directory after completion.</td></tr>
             </tbody>
@@ -175,6 +176,10 @@ ssh user@server 'uname -a'</code></pre>
           <p>If a simple SSH command fails with sudo's message that a terminal is
             required to read the password, Hitoiki offers Retry with <code>-tt</code>.
             Accepting the offer reruns the command with a remote terminal requested.</p>
+          <p class="note">The retry runs the whole command again. Anything in it that ran
+            before sudo refused runs a second time, so with
+            <code>ssh server 'echo x &gt;&gt; log; sudo true'</code> the write happens twice.
+            The offer shows the full command before you run it.</p>
           <p>The retry is offered for commands beginning with <code>ssh </code>
             when a terminal option is not already present. For more complex shell
             expressions, enter <code>-tt</code> yourself where appropriate.</p>
@@ -205,8 +210,8 @@ ssh user@server 'uname -a'</code></pre>
         <section id="stopping" aria-labelledby="stopping-heading">
           <h2 id="stopping-heading">Stopping commands</h2>
           <p>Stop or <kbd>Control-C</kbd> first sends <code>SIGINT</code>, the
-            normal interrupt signal, to the local process group. A second Stop
-            sends <code>SIGKILL</code>, which forces that group to terminate.</p>
+            normal interrupt signal, to the local process group. A second Stop or
+            <kbd>Control-C</kbd> sends <code>SIGKILL</code>, which forces that group to terminate.</p>
           <p>After Stop, Hitoiki stops drawing further output from that run.
             Quitting the app also terminates its owned local command.</p>
           <p class="note">Interrupting the local SSH process does not guarantee
@@ -230,9 +235,11 @@ ssh user@server 'uname -a'</code></pre>
           <img class="shot shot-settings" src="/assets/screens/settings.webp" width="1264" height="1640" loading="lazy"
             alt="The Hitoiki settings window: shortcut, starting folder, terminal, appearance, history, menu bar, Open at Login, update checks, and macros.">
           <ul>
-            <li><strong>Shortcut.</strong> <kbd>Control-Command-Space</kbd> by default. If another
-              app or macOS already holds the shortcut, Hitoiki says so in the panel and in settings.</li>
-            <li><strong>Commands start in.</strong> Your home folder, or a fixed folder you choose.</li>
+            <li><strong>Shortcut.</strong> <kbd>Control-Command-Space</kbd> by default. If macOS
+              will not register the shortcut, Hitoiki says why in the panel and in settings.</li>
+            <li><strong>Commands start in.</strong> Your home folder, or a fixed folder you choose.
+              If the folder no longer exists, the command runs in your home folder and the panel says so.</li>
+            <li><strong>Appearance.</strong> System, Light or Dark.</li>
             <li><strong>Open in Terminal uses.</strong> Terminal.app by default; Ghostty, iTerm2,
               Kitty, WezTerm or Alacritty when installed, or another terminal.</li>
             <li><strong>Macros.</strong> Nine slots. <kbd>Command-1</kbd> to <kbd>Command-9</kbd>
@@ -243,12 +250,16 @@ ssh user@server 'uname -a'</code></pre>
               <a href="#privacy">Privacy</a>.</li>
           </ul>
           <h3>History</h3>
-          <p>History is off by default. When you turn it on, Hitoiki keeps the commands
-            you run in <code>~/Library/Application Support/Hitoiki/history.txt</code>, one per line.
-            A line that starts with a space is kept nowhere; in a command of several lines,
-            each line is kept or left on its own. <kbd>Down Arrow</kbd> shows past commands,
-            and <kbd>Right Arrow</kbd> takes the grey suggestion after the cursor.
-            Clear History in settings deletes the file.</p>
+          <p><kbd>Down Arrow</kbd> shows past commands, newest first, filtered by what you
+            have typed, and <kbd>Right Arrow</kbd> takes the grey suggestion after the cursor.
+            Hitoiki always remembers the commands you have run since it opened, and forgets
+            them when it quits.</p>
+          <p>History is off by default. When you turn it on, Hitoiki also keeps the commands
+            you run in <code>~/Library/Application Support/Hitoiki/history.txt</code>, one per line,
+            up to the newest 5,000 lines, and recall shows them too.
+            A line that starts with a space, or is blank, is kept nowhere; in a command of several lines,
+            each line is kept or left on its own.
+            Clear History in settings deletes the file and forgets the commands run since Hitoiki opened.</p>
           <img class="shot" src="/assets/screens/history.webp" width="1372" height="332" loading="lazy"
             alt="The list of past commands under the Hitoiki input, with one selected.">
           <h3>Menu bar item</h3>
@@ -295,11 +306,11 @@ ssh user@server 'uname -a'</code></pre>
 
         <section id="troubleshooting" aria-labelledby="troubleshooting-heading">
           <h2 id="troubleshooting-heading">Troubleshooting</h2>
-          <h3>The shortcut opens Character Viewer or does nothing</h3>
-          <p>Another app or macOS may own <kbd>Control-Command-Space</kbd>.
-            Check Keyboard Shortcuts in System Settings, reassign the conflicting
-            shortcut, and reopen Hitoiki. Opening Hitoiki from Applications brings
-            the panel forward while the app is running.</p>
+          <h3>The shortcut does nothing</h3>
+          <p>Open Hitoiki from Applications: while the app is running, this brings the
+            panel forward. If macOS would not register the shortcut, the panel and settings
+            say why. Choose another shortcut in settings, or free the combination in
+            System Settings › Keyboard › Keyboard Shortcuts, then quit Hitoiki and open it again.</p>
           <h3>A command is not found</h3>
           <p>Use the executable's full path and check your exported
             <code>PATH</code>. Interactive aliases and functions are not loaded.
@@ -325,14 +336,27 @@ ssh user@server 'uname -a'</code></pre>
             Stopping the local SSH process cannot guarantee remote cleanup.</p>
         </section>
 
+        <section id="removing" aria-labelledby="removing-heading">
+          <h2 id="removing-heading">Removing Hitoiki</h2>
+          <p>Hitoiki keeps data in two places:</p>
+          <ul>
+            <li>the settings file, <code>~/Library/Preferences/com.sageframe.hitoiki.plist</code></li>
+            <li>with history on, the folder <code>~/Library/Application Support/Hitoiki/</code></li>
+          </ul>
+          <p>If you turned on Open at Login, turn it off first. Then quit Hitoiki,
+            delete it from Applications, and delete those two.</p>
+        </section>
+
         <section id="building" aria-labelledby="building-heading">
           <h2 id="building-heading">Building from source</h2>
           <p>The app is written in Swift 6, uses Swift Package Manager, and has
             no third-party package dependencies. Building requires macOS and
             a Swift 6 toolchain.</p>
           <p>From a checkout of the application repository:</p>
-          <pre><code>swift build
-swift test</code></pre>
+          <pre><code>swift build</code></pre>
+          <p>Some tests open windows and take the keyboard, so the project runs its tests
+            in a macOS virtual machine under Tart, with <code>scripts/vm-test.sh</code>.
+            Running <code>swift test</code> directly opens those windows on your own screen.</p>
           <p>To build the app bundle for your Mac, run
             <code>ARCH_FLAGS="" ./scripts/build_macos.sh</code>, which writes
             <code>dist/Hitoiki.app</code>. The
